@@ -7,26 +7,32 @@ printf "       _     _           _   _  __                 _____
  \___/|_.__// |\___|\___|\__|_|_|  \__, |     |___/____/ 
           |__/                     |___/                 
 "
-#!/bin/bash
+tput sgr 0;
 set -e
 if [ ! -d ~/.objectify-s3 ]; then
 	mkdir ~/.objectify-s3
 fi
 touch ~/.objectify-s3/vulnbuckets.txt
 touch ~/.objectify-s3/allbuckets.txt
-echo "$(tput setaf 2)Finding ruby" 
+echo -e "\n\n"
+echo "$(tput bold)$(tput setaf 2)Beginning Installation$(tput sgr 0)"
+
+echo "--------------------------------"
+echo "$(tput bold)Finding ruby" 
 if which ruby; then
-	echo "$(tput bold)Found$(tput sgr 0)"
+	echo "$(tput bold)$(tput setaf 2)Found$(tput sgr 0)"
+	echo "--------------------------------"
 	echo "Installing required gems"
 	bundle install
-	echo "--------------------------------"
+	echo "$(tput bold)$(tput setaf 2)Done$(tput sgr 0)"
 else
-	echo "$(tput setaf 1) $(tput bold)it seems ruby is not installed$(tput sgr 0)"
+	echo "$(tput setaf 1)$(tput bold)it seems ruby is not installed$(tput sgr 0)"
 	exit 1;
 fi
-echo "$(tput setaf 2)Finding awscli" 
+echo "--------------------------------"
+echo "$(tput bold)Finding awscli" 
 if which aws; then
-	echo "$(tput bold)Found$(tput sgr 0)"
+	echo "$(tput bold)$(tput setaf 2)Found$(tput sgr 0)"
 	echo "--------------------------------"
 else
 	echo "$(tput setaf 1) $(tput bold)it seems awscli is not installed.$(tput sgr 0)"
@@ -35,14 +41,17 @@ else
 		brew install awscli
 		brew link awscli
 		echo "Now you need to set up your credentials for awscli."
+		echo "--------------------------------"
 	else
 		curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 		unzip awscliv2.zip
 		sudo ./aws/install
 		aws --version
-		echo "$(tput setaf 2) $(tput bold) $(tput bel)awscli should be installed now. you must set up your aws access using $(tput sgr 0) aws --configure"
+		echo "$(tput setaf 2) $(tput bold) $(tput bel)awscli should be installed now. you must set up your aws access using $(tput sgr 0) aws configure"
+		echo "--------------------------------"
 	fi
 fi
+echo "$(tput setaf 2)$(tput bold)$(tput bel)Installation Complete $(tput sgr 0)"
 chmod +x objectify-s3.sh
 ln -s objectify-s3.sh objectify-s3 2>/dev/null
 chmod +x objectify-s3
@@ -51,4 +60,3 @@ echo 'export PATH="$PATH:~/objectify-s3/"' > ~/.bash_profile
 echo 'export PATH="$PATH:~/objectify-s3/"' > ~/.zshrc
 source ~/.bashrc
 source ~/.zshrc
-echo "$(tput setaf 2) $(tput bold) (tput bel )Installation Complete(tput sgr 0)"
