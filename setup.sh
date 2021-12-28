@@ -27,4 +27,6 @@ echo 'export PATH="$PATH:~/objectify-s3/' > ~/.bash_profile
 echo 'export PATH="$PATH:~/objectify-s3/' > ~/.zshrc
 source ~/.bashrc
 source ~/.zshrc
+chmod +x objectify-s3.sh
+ln -s objectify-s3 objectify-s3
 echo "$(tput setaf 2) $(tput bold) (tput bil )Installation Complete(tput sgr 0)"
