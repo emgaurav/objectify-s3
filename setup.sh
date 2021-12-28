@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "$(tput clear)$(tput smso)$(tput bel)$(tput bold)$(tput rev)"
+echo "$(tput clear)$(tput bel)$(tput bold)"
 printf "       _     _           _   _  __                 _____ 
   ___ | |__ (_) ___  ___| |_(_)/ _|_   _       ___|___ / 
  / _ \| '_ \| |/ _ \/ __| __| | |_| | | |_____/ __| |_ \ 
@@ -8,41 +8,48 @@ printf "       _     _           _   _  __                 _____
           |__/                     |___/                 
 "
 echo "$(tput sgr 0)"
-
-
-echo $'\n'"$(tput smso)$(tput setaf 2)Listing available buckets $(tput sgr 0)"$'\n'
-rm ~/.objectify-s3/allbuckets.txt 2>/dev/null; touch ~/.objectify-s3/allbuckets.txt 2>/dev/null
-aws s3 ls| awk '{print $3}'>>~/.objectify-s3/allbuckets.txt
-tput setaf 2; cat ~/.objectify-s3/allbuckets.txt
-
-echo $'\n'"$(tput smso)$(tput setaf 172)Finding misconfigured buckets. It takes a few seconds..$(tput sgr 0)"$'\n'
-rm ~/.objectify-s3/vulnbuckets.txt 2>/dev/null; touch ~/.objectify-s3/vulnbuckets.txt 2>/dev/null;
-
-for bucket in `cat ~/.objectify-s3/allbuckets.txt` 
-do
-	#if aws s3api get-public-access-block --bucket $bucket 2>&1| grep -q -i -e 'false' -e 'NoSuchPublicAccessBlockConfiguration'  then 
-	#this function checks vulnerable buckets from all buckets
-	function vulnbuck() {
-		#aws s3api get-public-access-block --bucket $bucket >tmp.txt 2>&1 --ignore
-		if aws s3api get-public-access-block --bucket $bucket 2>&1|grep -q -i -e 'false' -e 'NoSuchPublicAccessBlockConfiguration'; then
-			echo $bucket>> ~/.objectify-s3/vulnbuckets.txt
-			echo "$(tput bold) $(tput setaf 1)Found:$(tput sgr 0) $bucket"
-		fi
-	}
-	vulnbuck &
-done && wait
-
-echo $'\n'"$(tput bold)$(tput smso)$(tput setaf 1)Listing public objects from all buckets now $(tput sgr 0)"$'\n'
-for bucket in `cat ~/.objectify-s3/vulnbuckets.txt`
-do
-	#this function checks for vulnerable objects from file vulnbuckets.txt
-	function vulnobj() {
-	region=`aws s3api get-bucket-location --bucket $bucket| grep -i 'constraint'| cut -d'"' -f4`
-	echo "$(tput bold) $(tput setab 7) $(tput setaf 1)Bucket - > $bucket $(tput sgr 0)";
-	bundle exec ruby vulnobj.rb $bucket $region
-	}
-	vulnobj
-done
-
-
-echo $'\n'"$(tput smso) $(tput setaf 2) <<<<<<<<<<<<<<  COMPLETED  >>>>>>>>>>>>>> $(tput sgr 0)"$'\n'
+#!/bin/bash
+set -e
+if [ ! -d ~/.objectify-s3 ]; then
+	mkdir ~/.objectify-s3
+fi
+touch ~/.objectify-s3/vulnbuckets.txt
+touch ~/.objectify-s3/allbuckets.txt
+echo "$(tput setaf 2)Finding ruby" 
+if which ruby; then
+	echo "$(tput bold)Found$(tput sgr 0)"
+	echo "Installing required gems"
+	bundle install
+	echo "--------------------------------"
+else
+	echo "$(tput setaf 1) $(tput bold)it seems ruby is not installed$(tput sgr 0)"
+	exit 1;
+fi
+echo "$(tput setaf 2)Finding awscli" 
+if which aws; then
+	echo "$(tput bold)Found$(tput sgr 0)"
+	echo "--------------------------------"
+else
+	echo "$(tput setaf 1) $(tput bold)it seems awscli is not installed.$(tput sgr 0)"
+	echo "$(tput setaf 2) $(tput bold)Trying to install now. $(tput sgr 0)"
+	if which brew; then
+		brew install awscli
+		brew link awscli
+		echo "Now you need to set up your credentials for awscli."
+	else
+		curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+		unzip awscliv2.zip
+		sudo ./aws/install
+		aws --version
+		echo "$(tput setaf 2) $(tput bold) $(tput bel)awscli should be installed now. you must set up your aws access using $(tput sgr 0) aws --configure"
+	fi
+fi
+chmod +x objectify-s3.sh
+ln -s objectify-s3.sh objectify-s3 2>/dev/null
+chmod +x objectify-s3
+echo 'export PATH="$PATH:~/objectify-s3/"' > ~/.bashrc
+echo 'export PATH="$PATH:~/objectify-s3/"' > ~/.bash_profile
+echo 'export PATH="$PATH:~/objectify-s3/"' > ~/.zshrc
+source ~/.bashrc
+source ~/.zshrc
+echo "$(tput setaf 2) $(tput bold) (tput bel )Installation Complete(tput sgr 0)"
