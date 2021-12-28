@@ -42,4 +42,4 @@ echo 'export PATH="$PATH:~/objectify-s3/"' > ~/.bash_profile
 echo 'export PATH="$PATH:~/objectify-s3/"' > ~/.zshrc
 source ~/.bashrc
 source ~/.zshrc
-echo "$(tput setaf 2) $(tput bold) (tput bil )Installation Complete(tput sgr 0)"
+echo "$(tput setaf 2) $(tput bold) $(tput bil) Installation Complete $(tput sgr 0)"
