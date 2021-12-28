@@ -7,7 +7,6 @@ printf "       _     _           _   _  __                 _____
  \___/|_.__// |\___|\___|\__|_|_|  \__, |     |___/____/ 
           |__/                     |___/                 
 "
-echo "$(tput sgr 0)"
 #!/bin/bash
 set -e
 if [ ! -d ~/.objectify-s3 ]; then
