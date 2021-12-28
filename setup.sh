@@ -10,12 +10,12 @@ printf "       _     _           _   _  __                 _____
 echo "$(tput sgr 0)"
 
 
-echo $'\n'"$(tput smso) $(tput setaf 2) Listing available buckets $(tput sgr 0)"$'\n'
+echo $'\n'"$(tput smso)$(tput setaf 2)Listing available buckets $(tput sgr 0)"$'\n'
 rm ~/.objectify-s3/allbuckets.txt 2>/dev/null; touch ~/.objectify-s3/allbuckets.txt 2>/dev/null
 aws s3 ls| awk '{print $3}'>>~/.objectify-s3/allbuckets.txt
-cat ~/.objectify-s3/allbuckets.txt
+tput setaf 2; cat ~/.objectify-s3/allbuckets.txt
 
-echo $'\n'"$(tput smso) $(tput setaf 2)Finding misconfigured buckets. It will take some time. Keep patience...$(tput sgr 0)"$'\n'
+echo $'\n'"$(tput smso)$(tput setaf 172)Finding misconfigured buckets. It takes a few seconds..$(tput sgr 0)"$'\n'
 rm ~/.objectify-s3/vulnbuckets.txt 2>/dev/null; touch ~/.objectify-s3/vulnbuckets.txt 2>/dev/null;
 
 for bucket in `cat ~/.objectify-s3/allbuckets.txt` 
@@ -32,7 +32,7 @@ do
 	vulnbuck &
 done && wait
 
-echo $'\n'"$(tput bold) $(tput blink) $(tput smso) $(tput setaf 3)Listing public objects from all buckets now $(tput sgr 0)"$'\n'
+echo $'\n'"$(tput bold)$(tput smso)$(tput setaf 1)Listing public objects from all buckets now $(tput sgr 0)"$'\n'
 for bucket in `cat ~/.objectify-s3/vulnbuckets.txt`
 do
 	#this function checks for vulnerable objects from file vulnbuckets.txt
