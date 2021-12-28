@@ -12,9 +12,9 @@ printf "       _     _           _   _  __                 _____
           |__/                     |___/                 
 "
 echo "$(tput sgr 0)"
-echo $'\n'"$(tput setaf 2) Fetching latest updates $(tput sgr 0)"$'\n'
+echo $'\n'"$(tput setaf 2)Fetching latest updates $(tput sgr 0)"$'\n'
 cd ~/objectify-s3; git pull > /dev/null 2>&1;
-echo "$(tput setaf 2) Done $(tput sgr 0)"$'\n'
+echo "$(tput setaf 2)Done $(tput sgr 0)"$'\n'
 
 # trap "exit 1" SIGINT
 # trap "exit 1" EXIT
