@@ -31,6 +31,7 @@ else
 		unzip awscliv2.zip
 		sudo ./aws/install
 		aws --version
+		echo "$(tput setaf 2) $(tput bold) $(tput bil)awscli should be installed now. you must set up your aws access using $(tput sgr 0) aws --configure"
 	fi
 fi
 ln -s objectify-s3.sh objectify-s3
