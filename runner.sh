@@ -37,7 +37,7 @@ do
 	function vulnobj() {
 	region=`aws s3api get-bucket-location --bucket $bucket| grep -i 'constraint'| cut -d'"' -f4`
 	echo "$(tput bold) $(tput setab 7) $(tput setaf 1)Bucket - > $bucket $(tput sgr 0)";
-		bundle exec ruby find_public_s3_objects.rb $bucket $region
+		vulnobj.rb $bucket $region
 	}
 	vulnobj
 done
