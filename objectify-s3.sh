@@ -12,11 +12,15 @@ printf "       _     _           _   _  __                 _____
           |__/                     |___/                 
 "
 echo "$(tput sgr 0)"
+echo $'\n'"$(tput setaf 2) Fetching latest updates $(tput sgr 0)"$'\n'
+cd ~/objectify-s3; git pull > /dev/null 2>&1;
+echo "$(tput setaf 2) Done $(tput sgr 0)"$'\n'
 
-trap "exit 1" SIGINT
-trap "exit 1" EXIT
-trap "exit 1" err
-trap "exit 1" 1
+# trap "exit 1" SIGINT
+# trap "exit 1" EXIT
+# trap "exit 1" err
+# trap "exit 1" 1
+echo "$(tput smso) ----------------------------- $(tput sgr 0)"
 echo $'\n'"$(tput smso)$(tput setaf 2)Listing available buckets $(tput sgr 0)"$'\n'
 rm ~/.objectify-s3/allbuckets.txt 2>/dev/null; touch ~/.objectify-s3/allbuckets.txt 2>/dev/null
 aws s3 ls| awk '{print $3}'>>~/.objectify-s3/allbuckets.txt
@@ -45,7 +49,7 @@ do
 	#this function checks for vulnerable objects from file vulnbuckets.txt
 	function vulnobj() {
 	region=`aws s3api get-bucket-location --bucket $bucket| grep -i 'constraint'| cut -d'"' -f4`
-	echo "$(tput bold) $(tput setab 7) $(tput setaf 1)Bucket - > $bucket $(tput sgr 0)";
+	echo "$(tput bold)$(tput setab 7)$(tput setaf 1)Bucket - > $bucket $(tput sgr 0)";
 	bundle exec ruby vulnobj.rb $bucket $region
 	}
 	vulnobj
