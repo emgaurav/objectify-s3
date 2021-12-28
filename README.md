@@ -10,15 +10,19 @@ Output contains:
 2. awscli
 
 # Installation
-1. Clone the repository. (Switch to your $Home directory `cd ~` before cloning) <br> 
+1. Switch to your $Home directory.
+``` 
+cd ~
+```
+2. Clone the repository. 
 ``` 
 git clone https://github.com/emgaurav/objectify-s3.git
 ```
-2. Run the setup. <br> 
+3. Run the setup. <br> 
 ```
 bash setup.sh
 ```
-5. That's about it.
+That's about it.
 
 # Usage
 ```
