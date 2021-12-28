@@ -9,12 +9,12 @@ echo "$(tput sgr 0)"
 
 
 echo $'\n'"$(tput smso) $(tput setaf 2) Listing available buckets $(tput sgr 0)"$'\n'
-rm allbuckets.txt; touch allbuckets.txt> /dev/null 2>&1
+rm ~/.objectify/allbuckets.txt; touch ~/.objectify/allbuckets.txt> /dev/null 2>&1
 aws s3 ls| awk '{print $3}'>>allbuckets.txt
 cat allbuckets.txt
 
 echo $'\n'"$(tput smso) $(tput setaf 2)Finding misconfigured buckets. It will take some time. Keep patience...$(tput sgr 0)"$'\n'
-rm vulnbuckets.txt; touch vulnbuckets.txt;
+rm ~/.objectify/vulnbuckets.txt; touch ~/.objectify/vulnbuckets.txt;
 
 for bucket in `cat allbuckets.txt` 
 do
