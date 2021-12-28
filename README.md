@@ -18,7 +18,11 @@ cd ~
 ``` 
 git clone https://github.com/emgaurav/objectify-s3.git
 ```
-3. Run the setup. <br> 
+3. Enter the repository.
+```
+cd objectify-s3
+```
+4. Run the setup. <br> 
 ```
 bash setup.sh
 ```
