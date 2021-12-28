@@ -20,13 +20,17 @@ if which awss; then
 	echo "$(tput bold)Found$(tput sgr 0)"
 	echo "--------------------------------"
 else
-	echo "$(tput setaf 1) $(tput bold)it seems awscli is not installed$(tput sgr 0)"
+	echo "$(tput setaf 1) $(tput bold)it seems awscli is not installed.$(tput sgr 0)"
+	echo "$(tput setaf 2) $(tput bold)Installing now. $(tput sgr 0)"
 	if which brew; then
 		brew install awscli
 		brew link awscli
 		echo "Now you need to set up your credentials for awscli."
 	else
-		exit 1;
+		curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+		unzip awscliv2.zip
+		sudo ./aws/install
+		aws --version
 	fi
 fi
 ln -s objectify-s3.sh objectify-s3
