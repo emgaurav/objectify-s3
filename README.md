@@ -10,12 +10,20 @@ Output contains:
 2. awscli
 
 # Installation
-1. Clone the repository. (Switch to your $Home directory `cd ~` before cloning) <br> `git clone https://github.com/emgaurav/objectify-s3.git`
-2. Run the setup. <br> `bash setup.sh` 
-3. That's about it.
+1. Clone the repository. (Switch to your $Home directory `cd ~` before cloning) <br> 
+``` 
+git clone https://github.com/emgaurav/objectify-s3.git
+```
+2. Run the setup. <br> 
+```
+bash setup.sh
+```
+5. That's about it.
 
 # Usage
-`objectify-s3` <br>
+```
+objectify-s3
+```
 Usage is very simple. No need to pass arguments or files. Simply run `objectify-s3` from any directory in terminal and it will start it's job.
 You just have to make sure your `awscli` is working properly and access keys are configured. `objectify-s3` runs with default aws credentials. Profiles are not supported yet.
 
