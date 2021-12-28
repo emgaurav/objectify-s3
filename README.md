@@ -1,5 +1,5 @@
 # objectify-s3
-Objectify-s3 is a fully automated tool that recursively checks AWS S3 buckets and objects from your AWS account for misconfigured permissions. Unlike most S3 auditing tools that only show bucket policy misconfigurations, this one checks object level ACLs as well, recursively. <br>
+Objectify-s3 is a fully automated scanner that recursively scans all AWS S3 buckets and objects in your AWS account for misconfigured permissions. Unlike most S3 auditing tools that only show bucket policy misconfigurations, this one checks object level ACLs as well, recursively. <br>
 Output contains: 
   1. All available buckets for scan
   2. Buckets with misconfigured permission (either bucket is public or objects are public)
@@ -22,3 +22,6 @@ You just have to make sure your `awscli` is working properly and access keys are
 # Supported Platforms
 1. Linux
 2. MAC
+
+# Credits/References
+https://faraday.ai/blog/finding-public-s3-objects/
