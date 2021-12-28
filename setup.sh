@@ -29,7 +29,7 @@ else
 		exit 1;
 	fi
 fi
-ln -s runner.sh objectify-s3
+ln -s objectify-s3.sh objectify-s3
 echo 'export PATH="$PATH:~/objectify-s3/' > ~/.bashrc
 echo 'export PATH="$PATH:~/objectify-s3/' > ~/.bash_profile
 echo 'export PATH="$PATH:~/objectify-s3/' > ~/.zshrc
