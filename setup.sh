@@ -54,7 +54,6 @@ fi
 echo "$(tput setaf 2)$(tput bold)$(tput bel)Installation Complete $(tput sgr 0)"
 chmod +x objectify-s3.sh
 #ln -s objectify-s3.sh objectify-s3 2>/dev/null
-chmod +x objectify-s3
 echo 'alias objectify-s3="bash ~/objectify-s3/objectify-s3.sh"' >> ~/.bashrc
 echo 'alias objectify-s3="bash ~/objectify-s3/objectify-s3.sh"' >> ~/.zshrc
 echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.bashrc
