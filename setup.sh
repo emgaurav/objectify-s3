@@ -53,10 +53,13 @@ else
 fi
 echo "$(tput setaf 2)$(tput bold)$(tput bel)Installation Complete $(tput sgr 0)"
 chmod +x objectify-s3.sh
-ln -s objectify-s3.sh objectify-s3 2>/dev/null
+#ln -s objectify-s3.sh objectify-s3 2>/dev/null
 chmod +x objectify-s3
-echo 'export PATH="$PATH:~/objectify-s3/"' > ~/.bashrc
-echo 'export PATH="$PATH:~/objectify-s3/"' > ~/.bash_profile
-echo 'export PATH="$PATH:~/objectify-s3/"' > ~/.zshrc
+echo 'alias objectify-s3="bash ~/objectify-s3/objectify-s3.sh"' >> ~/.bashrc
+echo 'alias objectify-s3="bash ~/objectify-s3/objectify-s3.sh"' >> ~/.zshrc
+echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.bashrc
+echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.bash_profile
+echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.zshrc
 source ~/.bashrc
 source ~/.zshrc
+source ~/.bash_profile
