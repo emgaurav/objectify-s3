@@ -25,3 +25,6 @@ ln -s runner.sh objectify-s3
 echo 'export PATH="$PATH:~/objectify-s3/' > ~/.bashrc
 echo 'export PATH="$PATH:~/objectify-s3/' > ~/.bash_profile
 echo 'export PATH="$PATH:~/objectify-s3/' > ~/.zshrc
+source ~/.bashrc
+source ~/.zshrc
+echo "$(tput setaf 2) $(tput bold) (tput bil )Installation Complete(tput sgr 0)"
