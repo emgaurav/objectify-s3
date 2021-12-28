@@ -1,5 +1,9 @@
 #!/bin/bash
-echo "$(tput clear)$(tput smso)$(tput bel)$(tput bold)$(tput rev)"
+tput clear;
+# tput smso;
+tput bel;
+tput bold;
+#tput rev;
 printf "       _     _           _   _  __                 _____ 
   ___ | |__ (_) ___  ___| |_(_)/ _|_   _       ___|___ / 
  / _ \| '_ \| |/ _ \/ __| __| | |_| | | |_____/ __| |_ \ 
