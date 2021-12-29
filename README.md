@@ -23,7 +23,7 @@ objectify-s3
 Usage is very simple. No need to pass arguments or files. Simply run `objectify-s3` from any directory in terminal and it will start it's job.
 `objectify-s3` runs with aws credentials 'default' profile. Custom profiles are not supported yet.
 
-**Press  _Ctrl + \\_  to skip finding objects from current bucket or directory** <br>
+**Press  _Ctrl_ + \\  to skip finding objects from current bucket or directory** <br>
 
 # Supported Platforms
 1. Linux
