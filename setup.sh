@@ -17,11 +17,11 @@ touch ~/.objectify-s3/allbuckets.txt
 echo -e "\n\n"
 echo "$(tput bold)$(tput setaf 2)<<<<   Beginning Installation   >>>>$(tput sgr 0)"
 
-echo "--------------------------------"
+echo "-----------------------------------"
 echo "$(tput bold)Finding ruby" 
 if which ruby; then
 	echo "$(tput bold)$(tput setaf 2)Found$(tput sgr 0)"
-	echo "--------------------------------"
+	echo "-----------------------------------"
 	echo "Installing required gems"
 	bundle install
 	echo "$(tput bold)$(tput setaf 2)Done$(tput sgr 0)"
