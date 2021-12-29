@@ -18,6 +18,18 @@ echo -e "\n\n"
 echo "$(tput bold)$(tput setaf 2)<<<<   Beginning Installation   >>>>$(tput sgr 0)"
 
 echo "-----------------------------------"
+#setting aliases
+chmod +x objectify-s3.sh
+#ln -s objectify-s3.sh objectify-s3 2>/dev/null
+echo 'alias objectify-s3="bash ~/objectify-s3/objectify-s3.sh"' >> ~/.bashrc
+echo 'alias objectify-s3="bash ~/objectify-s3/objectify-s3.sh"' >> ~/.zshrc
+echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.bashrc
+echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.bash_profile
+echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.zshrc
+source ~/.bash_profile 2>/duv/null
+source ~/.bashrc 2>/dev/null
+source ~/.zshrc 2>/dev/null
+
 echo "$(tput bold)Finding ruby" 
 if which ruby; then
 	echo "$(tput bold)$(tput setaf 2)Found$(tput sgr 0)"
@@ -52,14 +64,5 @@ else
 	fi
 fi
 echo "$(tput setaf 2)$(tput bold)$(tput bel)<<<<   Installation Complete   >>>>$(tput sgr 0)"
-chmod +x objectify-s3.sh
-#ln -s objectify-s3.sh objectify-s3 2>/dev/null
-echo 'alias objectify-s3="bash ~/objectify-s3/objectify-s3.sh"' >> ~/.bashrc
-echo 'alias objectify-s3="bash ~/objectify-s3/objectify-s3.sh"' >> ~/.zshrc
-echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.bashrc
-echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.bash_profile
-echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.zshrc
-source ~/.bash_profile
-source ~/.bashrc
-source ~/.zshrc
+
 
