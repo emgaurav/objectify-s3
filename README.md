@@ -16,35 +16,14 @@ Use this one liner
 cd ~; git clone https://github.com/emgaurav/objectify-s3.git; cd objectify-s3; bash setup.sh
 ```
 
-or follow these steps below.
-
-1. Switch to your $Home directory.
-``` 
-cd ~
-```
-2. Clone the repository. 
-``` 
-git clone https://github.com/emgaurav/objectify-s3.git
-```
-3. Enter the repository.
-```
-cd objectify-s3
-```
-4. Run the setup. <br> 
-```
-bash setup.sh
-```
-That's about it.
-
 # Usage
 ```
 objectify-s3
 ```
 Usage is very simple. No need to pass arguments or files. Simply run `objectify-s3` from any directory in terminal and it will start it's job.
-You just have to make sure your `awscli` is working properly and access keys are configured. `objectify-s3` runs with default aws credentials. Profiles are not supported yet.
+`objectify-s3` runs with aws credentials 'default' profile. Custom profiles are not supported yet.
 
 **Press  _Ctrl + \\_  to skip finding objects from current bucket or directory** <br>
-**Press _Ctrl + Z_ to terminate program execution** 
 
 # Supported Platforms
 1. Linux
