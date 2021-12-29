@@ -20,7 +20,7 @@ echo "$(tput setaf 2)Done $(tput sgr 0)"$'\n'
 # trap "exit 1" EXIT
 # trap "exit 1" err
 # trap "exit 1" 1
-echo "$(tput smso) ----------------------------- $(tput sgr 0)"
+echo "----------------------------------------$(tput sgr 0)"
 echo $'\n'"$(tput smso)$(tput setaf 2)Listing available buckets $(tput sgr 0)"$'\n'
 rm ~/.objectify-s3/allbuckets.txt 2>/dev/null; touch ~/.objectify-s3/allbuckets.txt 2>/dev/null
 aws s3 ls| awk '{print $3}'>>~/.objectify-s3/allbuckets.txt
