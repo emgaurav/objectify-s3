@@ -14,7 +14,7 @@ printf "       _     _           _   _  __                 _____
 echo "$(tput sgr 0)"
 echo $'\n'"$(tput setaf 2)Fetching latest updates $(tput sgr 0)"$'\n'
 cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; git pull;
-echo " "$'\n'
+echo "$(tput setaf 2)Done $(tput sgr 0)"$'\n'
 
 # trap "exit 1" SIGINT
 # trap "exit 1" EXIT
