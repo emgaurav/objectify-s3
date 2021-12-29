@@ -26,7 +26,7 @@ echo 'alias objectify-s3="bash ~/objectify-s3/objectify-s3.sh"' >> ~/.zshrc
 echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.bashrc
 echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.bash_profile
 echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.zshrc
-source ~/.bash_profile 2>/duv/null
+source ~/.bash_profile 2>/dev/null
 source ~/.bashrc 2>/dev/null
 source ~/.zshrc 2>/dev/null
 
@@ -63,6 +63,8 @@ else
 		echo "-----------------------------------"
 	fi
 fi
-echo "$(tput setaf 2)$(tput bold)$(tput bel)<<<<   Installation Complete   >>>>$(tput sgr 0)"
+echo "$(tput setaf 2)$(tput bold)$(tput bel)<<<<   Installation Complete   >>>>$(tput sgr 0)"$'\n'
+
+
 
 
