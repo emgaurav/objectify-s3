@@ -19,6 +19,8 @@ echo "checking awscli configuration"
 if ! aws configure list-profiles|grep -q -i "default"; then
 	echo "$(tput bold)$(tput setaf 1)awscli is not configured. You must configure using 'aws configure' command.$(tput sgr 0)"$'\n'
 	exit 0
+else
+	echo "$(tput setaf 2)$(tput bold)OK$(tput sgr 0)"
 fi
 	
 
