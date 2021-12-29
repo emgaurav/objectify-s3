@@ -29,11 +29,11 @@ else
 	echo "$(tput setaf 1)$(tput bold)it seems ruby is not installed$(tput sgr 0)"
 	exit 0;
 fi
-echo "--------------------------------"
+echo "-----------------------------------"
 echo "$(tput bold)Finding awscli" 
 if which aws; then
 	echo "$(tput bold)$(tput setaf 2)Found$(tput sgr 0)"
-	echo "--------------------------------"
+	echo "-----------------------------------"
 else
 	echo "$(tput setaf 1) $(tput bold)it seems awscli is not installed.$(tput sgr 0)"
 	echo "$(tput setaf 2) $(tput bold)Trying to install now. $(tput sgr 0)"
@@ -41,14 +41,14 @@ else
 		brew install awscli
 		brew link awscli
 		echo "Now you need to set up your credentials for awscli."
-		echo "--------------------------------"
+		echo "-----------------------------------"
 	else
 		curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 		unzip awscliv2.zip
 		sudo ./aws/install
 		aws --version
 		echo "$(tput setaf 2) $(tput bold) $(tput bel)awscli should be installed now. you must set up your aws access using $(tput sgr 0) aws configure"
-		echo "--------------------------------"
+		echo "-----------------------------------"
 	fi
 fi
 echo "$(tput setaf 2)$(tput bold)$(tput bel)<<<<   Installation Complete   >>>>$(tput sgr 0)"
