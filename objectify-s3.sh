@@ -12,7 +12,7 @@ printf "       _     _           _   _  __                 _____
           |__/                     |___/                 
 "
 echo "$(tput sgr 0)"
-trap "exit" SIGINT
+trap "exit" SIGINT SIGSTOP
 trap "echo '..bye'; kill 0" EXIT
 echo $'\n'"$(tput setaf 2)Fetching latest updates $(tput sgr 0)"$'\n'
 cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; git pull;
