@@ -11,6 +11,13 @@ Output contains:
 3. Git
 
 # Installation
+Use this one liner
+```
+cd ~; git clone https://github.com/emgaurav/objectify-s3.git; cd objectify-s3; bash setup.sh
+```
+
+or follow these steps below.
+
 1. Switch to your $Home directory.
 ``` 
 cd ~
