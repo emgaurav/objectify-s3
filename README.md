@@ -17,7 +17,6 @@ Use this one liner
 ```
 cd ~; git clone https://github.com/emgaurav/objectify-s3.git; cd objectify-s3; bash setup.sh
 ```
-
 # Usage
 ```
 objectify-s3
@@ -26,6 +25,8 @@ Usage is very simple. No need to pass arguments or files. Simply run `objectify-
 `objectify-s3` runs with aws credentials 'default' profile. Custom profiles are not supported yet.
 
 **Press  _Ctrl_ + \\  to skip finding objects from current bucket or directory** <br>
+# Sample Output
+<img src="sample.png" alt="drawing" width="500"/>
 
 # Supported Platforms
 1. Linux
