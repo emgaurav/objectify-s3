@@ -27,7 +27,7 @@ if which ruby; then
 	echo "$(tput bold)$(tput setaf 2)Done$(tput sgr 0)"
 else
 	echo "$(tput setaf 1)$(tput bold)it seems ruby is not installed$(tput sgr 0)"
-	exit 1;
+	exit 0;
 fi
 echo "--------------------------------"
 echo "$(tput bold)Finding awscli" 
