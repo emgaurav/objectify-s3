@@ -15,7 +15,7 @@ fi
 touch ~/.objectify-s3/vulnbuckets.txt
 touch ~/.objectify-s3/allbuckets.txt
 echo -e "\n\n"
-echo "$(tput bold)$(tput setaf 2)Beginning Installation$(tput sgr 0)"
+echo "$(tput bold)$(tput setaf 2)<<<<   Beginning Installation   >>>>$(tput sgr 0)"
 
 echo "--------------------------------"
 echo "$(tput bold)Finding ruby" 
@@ -51,7 +51,7 @@ else
 		echo "--------------------------------"
 	fi
 fi
-echo "$(tput setaf 2)$(tput bold)$(tput bel)Installation Complete $(tput sgr 0)"
+echo "$(tput setaf 2)$(tput bold)$(tput bel)<<<<   Installation Complete   >>>>$(tput sgr 0)"
 chmod +x objectify-s3.sh
 #ln -s objectify-s3.sh objectify-s3 2>/dev/null
 echo 'alias objectify-s3="bash ~/objectify-s3/objectify-s3.sh"' >> ~/.bashrc
@@ -59,6 +59,7 @@ echo 'alias objectify-s3="bash ~/objectify-s3/objectify-s3.sh"' >> ~/.zshrc
 echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.bashrc
 echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.bash_profile
 echo 'export PATH="$PATH:~/objectify-s3/"' >> ~/.zshrc
+source ~/.bash_profile
 source ~/.bashrc
 source ~/.zshrc
-source ~/.bash_profile
+
