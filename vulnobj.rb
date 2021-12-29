@@ -21,7 +21,7 @@ s3.bucket(BUCKET).objects.each do |object|
         
       end
     end
-    if grants.map { |x| x.grantee.uri }.any? { |x| x =~ /AllUsers/ }
+    if grants.map { |x| x.grantee.uri }.any? { |x| x =~ /AllUsers|AuthenticatedUsers/ }
       mutex.synchronize do
         puts "Object - > "+object.key
       end
