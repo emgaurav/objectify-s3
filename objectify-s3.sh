@@ -17,7 +17,7 @@ cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; git pull;
 echo "$(tput setaf 2)Done $(tput sgr 0)"$'\n'
 echo "checking awscli configuration"
 if ! aws configure list-profiles|grep -q -i "default"; then
-	echo "awscli is not configured. You must configure using \'aws configure\'."
+	echo "$(tput bold)$(tput setaf 1)awscli is not configured. You must configure using 'aws configure' command.$(tput sgr 0)"$'\n'
 	exit 0
 fi
 	
