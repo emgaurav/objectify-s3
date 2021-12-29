@@ -14,7 +14,7 @@ printf "       _     _           _   _  __                 _____
 echo "$(tput sgr 0)"
 echo $'\n'"$(tput setaf 2)Fetching latest updates $(tput sgr 0)"$'\n'
 cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; git pull;
-echo "$(tput setaf 2)Done $(tput sgr 0)"$'\n'
+echo "$(tput setaf 2)$(tput bold)Done $(tput sgr 0)"$'\n'
 echo "checking awscli configuration"
 if ! aws configure list-profiles|grep -q -i "default"; then
 	echo "$(tput bold)$(tput setaf 1)awscli is not configured. You must configure using 'aws configure' command.$(tput sgr 0)"$'\n'
