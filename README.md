@@ -26,6 +26,8 @@ Usage is very simple. No need to pass arguments or files. Simply run `objectify-
 `objectify-s3` runs with aws credentials 'default' profile. Custom profiles are not supported yet.
 
 **Press  _Ctrl_ + \\  to skip finding objects from current bucket or directory** <br>
+# Sample Output
+<img src="sample_output.png" alt="drawing" width="500"/>
 
 # Supported Platforms
 1. Linux
