@@ -8,6 +8,7 @@ Output contains:
 # Requirements
 1. Ruby
 2. awscli
+3. Git
 
 # Installation
 1. Switch to your $Home directory.
