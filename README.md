@@ -2,15 +2,16 @@
 
 # objectify-s3
 Objectify-s3 is a fully automated scanner that recursively scans all AWS S3 buckets and objects in your AWS account for misconfigured permissions. Unlike most S3 auditing tools that only show bucket policy misconfigurations, this one checks object level ACLs as well, recursively. <br>
+
 Output contains: 
   1. All available buckets for scan
   2. Buckets with misconfigured permission (either bucket is public or objects are public)
   3. Objects(bucket-wise) with public read permission
 
 # Requirements
-1. Ruby
-2. awscli
-3. Git
+1. [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+2. [awscli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+3. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 # Installation
 Use this one liner
