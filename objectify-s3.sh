@@ -14,7 +14,7 @@ printf "       _     _           _   _  __                 _____
 echo "$(tput sgr 0)"
 trap "exit" SIGINT SIGSTOP
 trap "echo '..bye'; kill 0" EXIT
-echo $'\n'"$(tput bold)Fetching updates.. $(tput sgr 0)"$'\n'
+echo $'\n'"$(tput bold)Fetching updates.. $(tput sgr 0)"
 cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; 
 git pull 1>> ~/.objectify-s3/tmp.txt
 if cat ~/.objectify-s3/tmp.txt|grep -q -i 'changed'; then
