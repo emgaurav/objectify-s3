@@ -14,9 +14,17 @@ printf "       _     _           _   _  __                 _____
 echo "$(tput sgr 0)"
 trap "exit" SIGINT SIGSTOP
 trap "echo '..bye'; kill 0" EXIT
-echo $'\n'"$(tput setaf 2)Fetching latest updates $(tput sgr 0)"$'\n'
-cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; git pull;
-echo "$(tput setaf 2)$(tput bold)Done $(tput sgr 0)"$'\n'
+echo $'\n'"$(tput bold)Fetching updates.. $(tput sgr 0)"$'\n'
+cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; 
+git pull 1>> ~/.objectify-s3/tmp.txt
+if cat ~/.objectify-s3/tmp.txt|grep -q -i 'changed'; then
+	echo "$(tput bold)Updated Successfully"
+	echo "Relaunching.."
+	sleep 1;
+	bash ~/objectify-s3/objectify-s3.sh;
+else
+	echo "$(tput setaf 2)$(tput bold)Using latest version$(tput sgr 0)"$'\n';
+fi
 echo "checking awscli configuration"
 if ! aws configure list-profiles|grep -q -i "default"; then
 	echo "$(tput bold)$(tput setaf 1)awscli is not configured. You must configure using 'aws configure' command.$(tput sgr 0)"$'\n'
