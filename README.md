@@ -23,6 +23,7 @@ Then, Use this one liner
 ```
 cd ~; git clone https://github.com/emgaurav/objectify-s3.git; cd objectify-s3; bash setup.sh
 ```
+Finally, Run `source .bashrc` or `source .zshrc` depending on your shell type to source the alias. Alternatively, you can close and reopen your terminal window.
 
 # Usage
 ```
