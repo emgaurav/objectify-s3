@@ -58,7 +58,10 @@ else
 		echo "-----------------------------------"
 	fi
 fi
+echo "$(tput bold)Setting Alias$(tput sgr 0)"
 source ~/.bash_profile 2>/dev/null
 source ~/.bashrc 2>/dev/null
 source ~/.zshrc 2>/dev/null
+sleep 1;
+
 echo "$(tput setaf 2)$(tput bold)$(tput bel)<<<<   Installation Complete   >>>>$(tput sgr 0)"$'\n'
