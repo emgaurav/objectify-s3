@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -i
 echo "$(tput clear)$(tput bel)$(tput bold)"
 printf "       _     _           _   _  __                 _____ 
   ___ | |__ (_) ___  ___| |_(_)/ _|_   _       ___|___ / 
