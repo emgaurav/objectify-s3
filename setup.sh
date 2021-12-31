@@ -58,7 +58,7 @@ else
 		echo "-----------------------------------"
 	fi
 fi
-echo "$(tput bold)Setting Alias$(tput sgr 0)"
+#echo "$(tput bold)Setting Alias$(tput sgr 0)"
 source ~/.bash_profile 2>/dev/null
 source ~/.bashrc 2>/dev/null
 source ~/.zshrc 2>/dev/null
