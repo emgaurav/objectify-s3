@@ -8,15 +8,13 @@ printf "       _     _           _   _  __                 _____
           |__/                     |___/                 
 "
 tput sgr 0;
-set -e
 if [ ! -d ~/.objectify-s3 ]; then
 	mkdir ~/.objectify-s3
 fi
-touch ~/.objectify-s3/vulnbuckets.txt
-touch ~/.objectify-s3/allbuckets.txt
+touch ~/.objectify-s3/vulnbuckets.txt;
+touch ~/.objectify-s3/allbuckets.txt;
 echo -e "\n\n"
-echo "$(tput bold)$(tput setaf 2)<<<<   Beginning Installation   >>>>$(tput sgr 0)"
-
+echo "$(tput bold)$(tput setaf 2)<<<<   Beginning Installation   >>>>$(tput sgr 0)";
 echo "-----------------------------------"
 #setting aliases
 chmod +x objectify-s3.sh
@@ -60,12 +58,7 @@ else
 		echo "-----------------------------------"
 	fi
 fi
-
 source ~/.bash_profile 2>/dev/null
 source ~/.bashrc 2>/dev/null
 source ~/.zshrc 2>/dev/null
 echo "$(tput setaf 2)$(tput bold)$(tput bel)<<<<   Installation Complete   >>>>$(tput sgr 0)"$'\n'
-
-
-
-
