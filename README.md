@@ -3,10 +3,41 @@
 # objectify-s3
 Objectify-s3 is a fully automated scanner that recursively scans all AWS S3 buckets and objects in your AWS account for misconfigured permissions. Unlike most S3 auditing tools that only show bucket policy misconfigurations, this one checks object level ACLs as well, recursively. <br>
 
-**Output contains:** 
-  1. All available buckets for scan
-  2. Buckets with misconfigured permission (either bucket is public or objects are public)
-  3. Objects(bucket-wise) with public read permission
+# Requirements
+1. [Ruby](https://www.ruby-lang.org/en/documentation/installation/) (Comes installed by default with Mac and most Linux distributions)
+2. [awscli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) (Objectify-s3 will install, if not found)
+3. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (Comes installed by default with all Mac and linux distributions)
+
+# Installation
+- Remove previous installation, if any
+```
+rm -rf ~/objectify-s3
+```
+
+- Then, Use this one liner
+```
+cd ~; git clone https://github.com/emgaurav/objectify-s3.git; cd objectify-s3; bash setup.sh
+```
+- Finally, Run `source ~/.bashrc` or `source ~/.zshrc` depending on your shell type to source the alias. Alternatively, you can close and reopen your terminal window.
+
+
+# Usage
+- To run a fully automated scan
+```
+objectify-s3
+```
+- To provide your file of buckets list
+```
+objectify-s3 -r /full/path/to/file.txt
+```
+_Note: You must provide the full path to file even if it is in your current directory_<br>
+_`objectify-s3` runs with 'default' aws credentials profile. Custom profiles are not supported yet._
+
+**Press  _Ctrl_ + \\  to skip finding objects from current bucket or directory** <br>
+
+# Sample Output
+<img src="sample_output.png" alt="drawing" width="500"/>
+
 
 # Requirements
 1. [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
@@ -14,27 +45,16 @@ Objectify-s3 is a fully automated scanner that recursively scans all AWS S3 buck
 3. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 # Installation
-Remove previous installation, if any
+- Remove previous installation, if any
 ```
 rm -rf ~/objectify-s3
 ```
 
-Then, Use this one liner
+- Then, Use this one liner
 ```
 cd ~; git clone https://github.com/emgaurav/objectify-s3.git; cd objectify-s3; bash setup.sh
 ```
-Finally, Run `source ~/.bashrc` or `source ~/.zshrc` depending on your shell type to source the alias. Alternatively, you can close and reopen your terminal window.
-
-# Usage
-```
-objectify-s3
-```
-Usage is very simple. No need to pass arguments or files. Simply run `objectify-s3` from any directory in terminal and it will start it's job.
-`objectify-s3` runs with aws credentials 'default' profile. Custom profiles are not supported yet.
-
-**Press  _Ctrl_ + \\  to skip finding objects from current bucket or directory** <br>
-# Sample Output
-<img src="sample_output.png" alt="drawing" width="500"/>
+- Finally, Run `source ~/.bashrc` or `source ~/.zshrc` depending on your shell type to source the alias. Alternatively, you can close and reopen your terminal window.
 
 # Supported Platforms
 1. Linux
