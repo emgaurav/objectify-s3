@@ -41,7 +41,7 @@ tput sgr 0;
 function checkupdates() {
 echo $'\n'"$(tput bold)Fetching updates.. $(tput sgr 0)"
 cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; 
-git pull 1> ~/.objectify-s3/tmp.txt
+git pull > ~/.objectify-s3/tmp.txt 2>/dev/null
 if cat ~/.objectify-s3/tmp.txt|grep -q -i 'changed'; then
 	echo "$(tput bold)Updated Successfully"
 	echo "Relaunching.."
