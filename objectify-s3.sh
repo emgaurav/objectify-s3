@@ -9,14 +9,14 @@ rm ~/.objectify-s3/vulnbuckets.txt 2>/dev/null; touch ~/.objectify-s3/vulnbucket
 
 #check arguments
 if [ ! -z "$1" ]; then
-	if [[ $1 == r ]]; then
+	if [[ $1 == "-r" ]]; then
 		if [ ! -z "$2" ]; then
 			file=$2;
 		else 
 			echo "Too few arguments";
 			exit 0;
 		fi
-	elif [[ $1 != r ]]; then
+	elif [[ $1 != "-r" ]]; then
 		echo "Invalid argument"; 
 		exit 0;
 	fi
@@ -40,8 +40,8 @@ tput sgr 0;
 #checks and installs updates
 function checkupdates() {
 echo $'\n'"$(tput bold)Fetching updates.. $(tput sgr 0)"
-cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; 
-git pull 1> ~/.objectify-s3/tmp.txt
+#cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; 
+#git pull 1> ~/.objectify-s3/tmp.txt
 if cat ~/.objectify-s3/tmp.txt|grep -q -i 'changed'; then
 	echo "$(tput bold)Updated Successfully"
 	echo "Relaunching.."
@@ -101,7 +101,7 @@ bundle exec ruby vulnobj.rb $bucket $region
 	echo $'\n'"$(tput bold)$(tput setab 7)$(tput setaf 1)Listing public objects from all buckets now $(tput sgr 0)"$'\n'
 	for bucket in `cat ~/.objectify-s3/vulnbuckets.txt`
 	do
-		echo "$(tput bold)$(tput setaf 1)Bucket - > $bucket $(tput sgr 0)";
+		echo $'\n'"$(tput bold)$(tput setaf 1)Bucket - > $bucket $(tput sgr 0)";
 		findvulnobj;
 	done
 
