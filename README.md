@@ -38,24 +38,6 @@ _`objectify-s3` runs with 'default' aws credentials profile. Custom profiles are
 # Sample Output
 <img src="sample_output.png" alt="drawing" width="500"/>
 
-
-# Requirements
-1. [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
-2. [awscli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-3. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-
-# Installation
-- Remove previous installation, if any
-```
-rm -rf ~/objectify-s3
-```
-
-- Then, Use this one liner
-```
-cd ~; git clone https://github.com/emgaurav/objectify-s3.git; cd objectify-s3; bash setup.sh
-```
-- Finally, Run `source ~/.bashrc` or `source ~/.zshrc` depending on your shell type to source the alias. Alternatively, you can close and reopen your terminal window.
-
 # Supported Platforms
 1. Linux
 2. MAC
