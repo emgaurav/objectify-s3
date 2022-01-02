@@ -11,8 +11,7 @@ rm ~/.objectify-s3/vulnbuckets.txt 2>/dev/null; touch ~/.objectify-s3/vulnbucket
 if [ ! -z "$1" ]; then
 	if [[ $1 == r ]]; then
 		if [ ! -z "$2" ]; then
-			echo "second"
-			file=$2; cat $file;
+			file=$2;
 		else 
 			echo "Too few arguments";
 			exit 0;
@@ -41,8 +40,8 @@ tput sgr 0;
 #checks and installs updates
 function checkupdates() {
 echo $'\n'"$(tput bold)Fetching updates.. $(tput sgr 0)"
-cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; 
-git pull 1> ~/.objectify-s3/tmp.txt
+#cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; 
+#git pull 1> ~/.objectify-s3/tmp.txt
 if cat ~/.objectify-s3/tmp.txt|grep -q -i 'changed'; then
 	echo "$(tput bold)Updated Successfully"
 	echo "Relaunching.."
@@ -62,19 +61,15 @@ else echo "$(tput setaf 2)$(tput bold)OK$(tput sgr 0)"; fi
 
 echo "----------------------------------------"
 }
-	
-
-
-
+#Lists all available buckets
 function listbuckets () {
 echo $'\n'"$(tput smso)$(tput setaf 2)Listing available buckets $(tput sgr 0)"$'\n'
 if [[ ! $file ]]; then
 	aws s3 ls| awk '{print $3}'>>~/.objectify-s3/allbuckets.txt
 	file=~/.objectify-s3/allbuckets.txt
 fi
-tput setaf 2; cat $file
+tput setaf 2; cat $file;
 echo $'\n';
-
 }
 
 #finds vulnerable buckets
@@ -85,6 +80,8 @@ function findvulnbuckets() {
 		echo "$(tput bold)$(tput setaf 1)Found:$(tput sgr 0) $bucket"
 	fi
 }
+
+#Calls another function find misconfigured buckets
 function printmisconfbuckets () {
 echo $'\n'"$(tput smso)$(tput setaf 172)Finding misconfigured buckets. It takes a few seconds..$(tput sgr 0)"$'\n'
 for bucket in `cat $file` 
