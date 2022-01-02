@@ -96,7 +96,6 @@ function findvulnobj() {
 region=`aws s3api get-bucket-location --bucket $bucket| grep -i 'constraint'| cut -d'"' -f4`
 bundle exec ruby vulnobj.rb $bucket $region
 }
-
 	printbanner; checkupdates; checkaws; listbuckets; printmisconfbuckets; 
 	echo $'\n'"$(tput bold)$(tput setab 7)$(tput setaf 1)Listing public objects from all buckets now $(tput sgr 0)"$'\n'
 	for bucket in `cat ~/.objectify-s3/vulnbuckets.txt`
