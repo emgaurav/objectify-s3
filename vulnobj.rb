@@ -9,7 +9,7 @@ region = ARGV[1]
 
 count = 0
 comp = 500
-pool = Thread.pool 16
+pool = Thread.pool 50
 mutex = Mutex.new
 s3.bucket(BUCKET).objects.each do |object|
   pool.process do
