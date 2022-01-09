@@ -1,7 +1,19 @@
 #!/bin/bash
 #error handler
 trap "exit" SIGINT SIGSTOP
-trap "echo $'\n''$(tput bold)..bye!'; kill 0" EXIT
+trap "echo $'\n'; kill 0" EXIT
+#'$(tput bold)..bye!'
+
+#help 
+function help() {
+
+	echo $'\n'
+	echo "$(tput bold)Usage : $(tput sgr 0)"$'\n'
+	echo "• To Run a fully automated scan:$(tput sgr 0)"$'\n'
+	echo "    $(tput bold)\$ objectify-s3$(tput sgr 0)"$'\n'
+	echo "• To specify your own list of buckets:$(tput sgr 0)"$'\n'
+	echo "    $(tput bold)\$objectify-s3 -r /full/path/to/file.txt$(tput sgr 0)"
+} 
 
 #refresh files
 rm ~/.objectify-s3/allbuckets.txt 2>/dev/null; touch ~/.objectify-s3/allbuckets.txt 2>/dev/null
@@ -13,12 +25,14 @@ if [ ! -z "$1" ]; then
 		if [ ! -z "$2" ]; then
 			file=$2;
 		else 
-			echo "Too few arguments";
-			exit 0;
+			echo $'\n'"Too few arguments";
+			help;
+			exit;
 		fi
 	elif [[ $1 != "-r" ]]; then
-		echo "Invalid argument"; 
-		exit 0;
+		echo $'\n'"Invalid argument"; 
+		help;
+		exit;
 	fi
 fi
 
