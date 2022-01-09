@@ -12,7 +12,7 @@ function help() {
 	echo "• To Run a fully automated scan:$(tput sgr 0)"$'\n'
 	echo "    $(tput bold)\$ objectify-s3$(tput sgr 0)"$'\n'
 	echo "• To specify your own list of buckets:$(tput sgr 0)"$'\n'
-	echo "    $(tput bold)\$objectify-s3 -r /full/path/to/file.txt$(tput sgr 0)"
+	echo "    $(tput bold)\$ objectify-s3 -r /full/path/to/file.txt$(tput sgr 0)"
 } 
 
 #refresh files
