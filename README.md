@@ -27,6 +27,10 @@ cd ~; git clone https://github.com/emgaurav/objectify-s3.git; cd objectify-s3; b
 ```
 objectify-s3
 ```
+- To scan a single bucket
+```
+objectify-s3 -s bucket-name
+```
 - To provide your file of buckets list
 ```
 objectify-s3 -r /full/path/to/file.txt
