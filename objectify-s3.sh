@@ -25,12 +25,21 @@ if [ ! -z "$1" ]; then
 		if [ ! -z "$2" ]; then
 			file=$2;
 		else 
-			echo $'\n'"Too few arguments";
+			echo $'\n'"$(tput setaf 1)Target file not specified$(tput sgr 0)";
 			help;
 			exit;
 		fi
-	elif [[ $1 != "-r" ]]; then
-		echo $'\n'"Invalid argument"; 
+	elif [[ $1 == "-s" ]]; then
+		if [ ! -z "$2" ]; then
+			echo $2>~/.objectify-s3/allbuckets.txt;
+			file=~/.objectify-s3/allbuckets.txt;
+		else 
+			echo $'\n'"$(tput setaf 1)Target bucket not specified$(tput sgr 0)";
+			help;
+			exit;
+		fi
+	elif [[ $1 != "-r" || $1 != "-s" ]]; then
+		echo $'\n'"$(tput setaf 1)Invalid argument$(tput sgr 0)"; 
 		help;
 		exit;
 	fi
@@ -54,8 +63,8 @@ tput sgr 0;
 #checks and installs updates
 function checkupdates() {
 echo $'\n'"$(tput bold)Checking for updates.. $(tput sgr 0)"
-cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; 
-git pull > ~/.objectify-s3/tmp.txt 2>/dev/null
+# cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; 
+# git pull > ~/.objectify-s3/tmp.txt 2>/dev/null
 if cat ~/.objectify-s3/tmp.txt|grep -q -i 'changed'; then
 	echo "$(tput bold)Updated Successfully"
 	echo "Relaunching.."
@@ -83,7 +92,7 @@ if [[ ! $file ]]; then
 	file=~/.objectify-s3/allbuckets.txt
 fi
 tput setaf 2; cat $file;
-echo $'\n';
+#echo $'\n';
 }
 
 #finds vulnerable buckets
