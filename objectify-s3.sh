@@ -11,8 +11,10 @@ function help() {
 	echo "$(tput bold)Usage : $(tput sgr 0)"$'\n'
 	echo "• To Run a fully automated scan:$(tput sgr 0)"$'\n'
 	echo "    $(tput bold)\$ objectify-s3$(tput sgr 0)"$'\n'
-	echo "• To specify your own list of buckets:$(tput sgr 0)"$'\n'
-	echo "    $(tput bold)\$ objectify-s3 -r /full/path/to/file.txt$(tput sgr 0)"
+	echo "• To scan a single bucket:$(tput sgr 0)"$'\n'
+	echo "    $(tput bold)\$ objectify-s3 -b $(tput setaf 3)bucket-name$(tput sgr 0)"$'\n'
+	echo "• To scan a list of buckets:$(tput sgr 0)"$'\n'
+	echo "    $(tput bold)\$ objectify-s3 -r $(tput setaf 3)/full/path/to/target-file.txt$(tput sgr 0)"
 } 
 
 #refresh files
@@ -29,7 +31,7 @@ if [ ! -z "$1" ]; then
 			help;
 			exit;
 		fi
-	elif [[ $1 == "-s" ]]; then
+	elif [[ $1 == "-b" ]]; then
 		if [ ! -z "$2" ]; then
 			echo $2>~/.objectify-s3/allbuckets.txt;
 			file=~/.objectify-s3/allbuckets.txt;
@@ -38,7 +40,7 @@ if [ ! -z "$1" ]; then
 			help;
 			exit;
 		fi
-	elif [[ $1 != "-r" || $1 != "-s" ]]; then
+	elif [[ $1 != "-r" || $1 != "-b" ]]; then
 		echo $'\n'"$(tput setaf 1)Invalid argument$(tput sgr 0)"; 
 		help;
 		exit;
@@ -63,8 +65,8 @@ tput sgr 0;
 #checks and installs updates
 function checkupdates() {
 echo $'\n'"$(tput bold)Checking for updates.. $(tput sgr 0)"
-# cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; 
-# git pull > ~/.objectify-s3/tmp.txt 2>/dev/null
+cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; 
+git pull > ~/.objectify-s3/tmp.txt 2>/dev/null
 if cat ~/.objectify-s3/tmp.txt|grep -q -i 'changed'; then
 	echo "$(tput bold)Updated Successfully"
 	echo "Relaunching.."
