@@ -29,9 +29,9 @@ objectify-s3
 ```
 - To scan a single bucket
 ```
-objectify-s3 -s bucket-name
+objectify-s3 -b bucket-name
 ```
-- To provide your file of buckets list
+- To scan a list buckets 
 ```
 objectify-s3 -r /full/path/to/file.txt
 ```
