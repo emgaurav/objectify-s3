@@ -118,7 +118,8 @@ done && wait
 
 #this function checks for vulnerable objects from file vulnbuckets.txt
 function findvulnobj() {
-region=`aws s3api get-bucket-location --bucket $bucket| grep -i 'constraint'| cut -d'"' -f4`
+regionparam=`aws s3api get-bucket-location --bucket $bucket| grep -i 'constraint'| cut -d'"' -f4`
+if [ -z $regionparam ]; then region="us-east-1"; fi
 bundle exec ruby vulnobj.rb $bucket $region
 }
 	printbanner; checkupdates; checkaws; listbuckets; printmisconfbuckets; 
