@@ -53,7 +53,7 @@ tput sgr 0;
 
 #checks and installs updates
 function checkupdates() {
-echo $'\n'"$(tput bold)Fetching updates.. $(tput sgr 0)"
+echo $'\n'"$(tput bold)Checking for updates.. $(tput sgr 0)"
 cd ~/objectify-s3; git reset --hard >/dev/null 2>&1; 
 git pull > ~/.objectify-s3/tmp.txt 2>/dev/null
 if cat ~/.objectify-s3/tmp.txt|grep -q -i 'changed'; then
