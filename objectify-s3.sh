@@ -120,7 +120,7 @@ done && wait
 function findvulnobj() {
 regionparam=`aws s3api get-bucket-location --bucket $bucket| grep -i 'constraint'| cut -d'"' -f4`
 if [ -z $regionparam ]; then region="us-east-1"; else region=$regionparam; fi
-bundle exec ruby vulnobj.rb $bucket $region
+bundle exec ruby vulnobj.rb $bucket $region 2>/dev/null
 }
 	printbanner; checkupdates; checkaws; listbuckets; printmisconfbuckets; 
 	echo $'\n'"$(tput bold)$(tput setab 7)$(tput setaf 1)Listing public objects from all buckets now $(tput sgr 0)"$'\n'
