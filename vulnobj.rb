@@ -17,7 +17,7 @@ s3.bucket(BUCKET).objects.each do |object|
     mutex.synchronize do
       count += 1
       if count % comp == 0
-        $stderr.write "Objects Scanned : #{count}"
+        $stdout.write "Objects Scanned : #{count}"
         string = " - Press Ctrl +  \\ to skip scanning this directory"
         puts string
         comp = comp * 2
