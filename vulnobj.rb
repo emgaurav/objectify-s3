@@ -27,6 +27,9 @@ s3.bucket(BUCKET).objects.each do |object|
     if grants.map { |x| x.grantee.uri }.any? { |x| x =~ /AllUsers|AuthenticatedUsers/ }
       mutex.synchronize do
         puts " ⭕ https://#{BUCKET}.s3.#{region}.amazonaws.com/"+object.key
+        File.open("tmp.html","a") do |f|
+        f.puts "<li><a href=\"https://#{BUCKET}.s3.#{region}.amazonaws.com/"+object.key+"\">/"+object.key+"</a></li>"
+        end
       end
     end
   end
