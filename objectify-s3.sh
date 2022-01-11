@@ -147,8 +147,8 @@ bundle exec ruby vulnobj.rb $bucket $region 2>/dev/null
 		tmpfile=~/objectify-s3/tmp.html
 		if [ -f $tmpfile ]; then
 			echo '<div class="panel-group" id="accordion"><div class="panel panel-default"><div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#'$bucket'"><h4 class="panel-title" style="color:Red;">'$bucket'</h4></a></div><div id="'$bucket'" class="panel-collapse collapse"><div class="panel-body" style="color:Tomato;">'>>~/objectify-s3/out.html
-			cat tmp.html >> ~/objectify-s3/out.html 2>/dev/null
-			rm tmp.html 2>/dev/null
+			cat ~/objectify-s3/tmp.html >> ~/objectify-s3/out.html 2>/dev/null
+			rm ~/objectify-s3/tmp.html 2>/dev/null
 			echo "</div></div></div></div>">>~/objectify-s3/out.html
 		fi
 
