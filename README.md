@@ -35,6 +35,7 @@ objectify-s3 -b bucket-name
 ```
 objectify-s3 -r /full/path/to/file.txt
 ```
+***An HTML report is generated and stored at ~/objectify-s3/out.html*** <br><br>
 _Note: You must provide the full path to file even if it is in your current directory_<br>
 _`objectify-s3` runs with 'default' aws credentials profile. Custom profiles are not supported yet._
 
