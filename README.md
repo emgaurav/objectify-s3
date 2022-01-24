@@ -9,7 +9,7 @@ Objectify-s3 is a fully automated scanner that recursively scans all AWS S3 buck
 3. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (Comes preinstalled with all Mac and linux distributions)
 
 # Installation
-- Set up your awscli credentials, if not done already. [Follow these instructions](https://github.com/emgaurav/objectify-s3/wiki/AWS-related-pre-requisites)
+- Set up your awscli credentials, if not done already. [Follow these instructions](https://github.com/emgaurav/objectify-s3/wiki/Setting-up-awscli-credentials)
 - Remove previous installation, if any
 ```
 rm -rf ~/objectify-s3
